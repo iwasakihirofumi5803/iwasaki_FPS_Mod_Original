@@ -15,7 +15,10 @@ public class PunchDamage : MonoBehaviour
     void OnTriggerEnter(Collider Collider)
     //物体がすり抜けた時(コライダー コライダー)
     {
-        Debug.Log(m_PunchDamage);
         // パンチのダメージを表示
+        if (Collider.CompareTag("Enemy"))
+        {
+            Collider.GetComponent<Damageable>().InflictDamage(m_PunchDamage, false, null);
+        }
     }
 }
